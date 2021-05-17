@@ -1,0 +1,52 @@
+.grid-container {
+  display: grid;
+  --gap-thickness: 2px;
+  gap: var(--gap-thickness);
+  overflow: hidden;
+  user-select: none;
+}
+
+.resize-x {
+  cursor: ew-resize;
+}
+
+.resize-y {
+  cursor: ns-resize;
+}
+
+.grid-cell {
+  position: relative;
+  pointer-events: none;
+}
+
+.grid-cell::after,
+.grid-cell::before {
+  position: absolute;
+  content: '';
+  pointer-events: all;
+  background: var(--gap-color);
+}
+
+.grid-cell::after {
+  top: 100%;
+  left: 0;
+  width: calc(100% + var(--gap-thickness));
+  height: var(--gap-thickness);
+  cursor: ns-resize;
+}
+
+.grid-cell::before {
+  top: 0;
+  left: 100%;
+  width: var(--gap-thickness);
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.grid-cell > * {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: all;
+  overflow: hidden;
+}
