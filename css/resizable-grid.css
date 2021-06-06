@@ -27,6 +27,11 @@
   background: var(--gap-color);
 }
 
+.grid-cell.lock-horizontal::after,
+.grid-cell.lock-vertical::before {
+  pointer-events: none;
+}
+
 .grid-cell::after {
   top: 100%;
   left: 0;

@@ -20,22 +20,31 @@ window.addEventListener('load', async () => {
     rows: 4, // ['1fr', '1fr']
     columns: 2, // ['1fr', '1fr', '1fr']
     gapThickness: '5px',
-    gapColor: 'black', 
+    gapColor: 'green', 
     width: '80vmin',
     height: '90vmin',
     container: '#main-grid',
   });
-
+  
+  
   await grid.addColumn(0); // add a column as first column, await -> wait for generation
   await grid.addRow(1); // add a row at as second row
-
+  
   // to remove: grid.removeRow(0), grid.removeColumn(0);
 
   const textDiv = document.createElement('div');
+  const imageDiv = new Image();
+  imageDiv.style.objectFit = 'cover'
+  imageDiv.src = 'https://via.placeholder.com/400';
   textDiv.contentEditable = true; // Edit text by clicking the textDiv element
   textDiv.textContent = 'TITLE HERE';
   textDiv.classList.add('text-div');
 
+  grid.lockVertical(0)
+  grid.unlockVertical(0)
+  console.log();
+
   grid.insert({ column: 0, row: 2 }, textDiv);
   grid.insert({ column: 0, row: 3 }, sketch1.canvas);
+  grid.insert({ column: 1, row: 2 }, imageDiv);
 });
